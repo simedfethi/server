@@ -1,0 +1,38 @@
+{
+  "applications": ["scibscrm"],
+  "changelogDate": "20221211102127",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "departement",
+  "fields": [
+    {
+      "fieldName": "departmentName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "departmentCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Departement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "company",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "departement",
+      "relationshipName": "entreprise",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

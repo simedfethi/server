@@ -1,0 +1,190 @@
+application {
+  config {
+    baseName scibscrm,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    applicationType monolith
+    packageName com.avanquest.scibscrm
+    buildTool maven,
+    testFrameworks [],
+    clientFramework angular,
+    enableTranslation true,
+    nativeLanguage en,
+    languages[en, fr]
+  }
+  entities *
+}
+entity Company{
+    company String maxlength(50),
+    lastName String maxlength(50),
+    firstName String maxlength(50),
+    emailAddress String maxlength(50),
+    jobTitle String maxlength(50),
+    businessPhone String maxlength(25),
+    homePhone String maxlength(25),
+    mobilePhone String maxlength(25),
+    faxNumber String maxlength(25),
+    address TextBlob,
+    city String maxlength(50),
+    stateProvince String maxlength(50),
+    zipPostalCode String maxlength(15),
+    countryRegion String maxlength(50),
+    webPage TextBlob,
+    notes TextBlob,
+    attachments Blob
+}
+entity Departement {
+    departmentName String maxlength(50),
+    departmentCode String maxlength(10)
+}
+entity Employee {
+	employeeName String maxlength(50),
+    gender Gender required ,
+    phone String required ,
+    addressLine1 String
+    // user
+}
+relationship ManyToOne {
+    Departement{Entreprise(company) required} to Company
+}
+relationship OneToOne {
+    Employee{utilisateur(login) required} to User
+}
+relationship ManyToOne {
+    Employee{Departement(departmentName) } to Departement
+}
+entity TransactionCRM {
+ reference String maxlength(50),
+ montant BigDecimal required min(0),
+ transactionEtape TransactionEtape ,
+ dateFin LocalDate,
+ transactionRecurrente Boolean ,
+ reference String maxlength(50),
+ creeLe ZonedDateTime ,
+ dernierUpdate ZonedDateTime ,
+ telephone String maxlength(50),
+ source TransactionSource,
+ adresse TextBlob,
+ notes TextBlob ,
+ latitude BigDecimal ,
+ longitude BigDecimal ,
+}
+relationship ManyToOne {
+    TransactionCRM{Monnaie(moneyName) } to Monnaie
+}
+relationship ManyToOne {
+    TransactionCRM{chargeAffaire(employeeName) } to Employee
+}
+relationship ManyToOne {
+    TransactionCRM{Client(company) } to Customer
+}
+relationship ManyToOne {
+    Customer{Commercial(employeeName) } to Employee
+}
+enum TransactionSource {
+    APPEL , EMAIL , SALON, AUTRES ,
+    CLIENT_EXISTANT("Client existant"),
+    RECOMMANDATION,
+    WEBSITE
+}
+enum TransactionEtape {
+  NOUVEAU , PAPIERS , DEVIS , PROGRESSION , FACTURE , FINALISEE
+}
+entity Monnaie {
+moneyName String maxlength(50),
+moneyIsocode String maxlength(50)
+}
+
+entity Customer {
+    customerType CustomerType ,
+	company String maxlength(50),
+	lastName String maxlength(50),
+	firstName String maxlength(50),
+	emailAddress String maxlength(50),
+	jobTitle String maxlength(50),
+	businessPhone String maxlength(25),
+	homePhone String maxlength(25),
+	mobilePhone String maxlength(25),
+	faxNumber String maxlength(25),
+	addresse TextBlob,
+	wilaya String maxlength(50),
+	daira String maxlength(50),
+	codePostal String maxlength(15),
+	commune String maxlength(50),
+	webPage TextBlob,
+	notes TextBlob,
+	attachments Blob ,
+    dejaClient Boolean ,
+    dateDerniereViste LocalDate ,
+ latitude BigDecimal ,
+ longitude BigDecimal ,
+}
+entity Product{
+designation String maxlength(50) ,
+description TextBlob
+}
+entity ProductCategory {
+categoryName String maxlength(50),
+categoryCode String maxlength(50),
+}
+entity Productvariante{
+ picture ImageBlob ,
+ codebarre String ,
+ productCode String maxlength(50),
+ salePrice  BigDecimal ,
+ uniteMesure String maxlength(50),
+ stockDisponible Double ,
+}
+relationship ManyToOne {
+    Product{Categorie(categoryName) } to ProductCategory
+}
+relationship ManyToMany {
+    Product to Productvariante
+}
+
+ enum CustomerType {
+    PHYSIQUE , MORALE
+}
+
+ enum Gender {
+    MALE, FEMALE, OTHER
+}
+enum Importance {
+    FAIBLE, MOYENNE, IMPORTANT
+}
+enum TypeActivite {
+    EMAIL, COMMENTAIRE ,
+    REUNION, APPELER ,
+    A_FAIRE("A FAIRE"),
+    SMS , CONFERENCE ,
+    TACHE
+}
+
+entity Activite {
+    typeactivite TypeActivite  required ,
+    resume String,
+    dateEcheance LocalDate,
+    heureActivite Instant,
+    importance Importance ,
+    note TextBlob
+}
+relationship ManyToMany {
+    TransactionCRM to Activite
+}
+relationship ManyToMany {
+    Activite {employeeInclus(employeeName) }  to Employee {activityEmp}
+}
+relationship ManyToOne {
+    Activite{Createur(employeeName) }  to Employee {activityAss}
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+filter all
+
+paginate all with pagination
+
+service all with serviceImpl

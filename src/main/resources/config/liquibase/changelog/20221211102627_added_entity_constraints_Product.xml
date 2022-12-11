@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Product.
+    -->
+    <changeSet id="20221211102627-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="categorie_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product__categorie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="rel_product__productvariante"
+                                 constraintName="fk_rel_product__productvariante__product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="productvariante_id"
+                                 baseTableName="rel_product__productvariante"
+                                 constraintName="fk_rel_product__productvariante__productvariante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="productvariante"/>
+    </changeSet>
+</databaseChangeLog>

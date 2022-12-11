@@ -1,0 +1,11 @@
+id;reference;montant;transaction_etape;date_fin;transaction_recurrente;cree_le;dernier_update;telephone;source;adresse;notes;latitude;longitude
+1;neural Qatar;35245;NOUVEAU;2022-12-11;false;2022-12-10T16:33:17;2022-12-11T05:06:46;756-865-9984;AUTRES;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;65954;69888
+2;deposit Berkshire;24617;FINALISEE;2022-12-10;false;2022-12-10T23:09:03;2022-12-11T08:58:45;1-426-954-1441 x058;SALON;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;80840;86110
+3;Implementation Direct;34822;PROGRESSION;2022-12-10;false;2022-12-10T13:26:27;2022-12-10T12:49:56;737.796.6503 x5669;WEBSITE;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;91817;27730
+4;Steel back-end;79303;FACTURE;2022-12-10;true;2022-12-10T20:13:05;2022-12-11T06:42:27;1-879-429-6787 x7145;EMAIL;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;85758;82768
+5;Fiji solution;28681;DEVIS;2022-12-11;true;2022-12-11T03:30:15;2022-12-10T22:28:54;253.622.9920;SALON;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;80071;41260
+6;Frozen implementation Burg;33769;DEVIS;2022-12-10;true;2022-12-10T16:49:20;2022-12-10T18:22:21;1-878-963-4403 x9492;EMAIL;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;12054;46306
+7;Bedfordshire cross-platform;31655;FACTURE;2022-12-10;false;2022-12-10T16:06:54;2022-12-10T19:10:20;758.222.4492 x95747;WEBSITE;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;81880;37806
+8;magenta;5400;FACTURE;2022-12-10;false;2022-12-11T10:08:55;2022-12-10T11:14:22;1-746-393-7619;SALON;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;19167;91193
+9;distributed;38812;DEVIS;2022-12-11;false;2022-12-10T19:50:04;2022-12-11T07:00:04;613-772-2041 x1255;RECOMMANDATION;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;25311;26371
+10;Computer invoice parse;52085;PROGRESSION;2022-12-10;true;2022-12-11T01:34:11;2022-12-10T16:53:16;1-502-756-7842;WEBSITE;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;65738;85699

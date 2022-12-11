@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Activite.
+    -->
+    <changeSet id="20221211102927-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="createur_id"
+                                 baseTableName="activite"
+                                 constraintName="fk_activite__createur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="activite_id"
+                                 baseTableName="rel_activite__employee_inclus"
+                                 constraintName="fk_rel_activite__employee_inclus__activite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="activite"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_inclus_id"
+                                 baseTableName="rel_activite__employee_inclus"
+                                 constraintName="fk_rel_activite__employee_inclus__employee_inclus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity TransactionCRM.
+    -->
+    <changeSet id="20221211102327-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="monnaie_id"
+                                 baseTableName="transaction_crm"
+                                 constraintName="fk_transaction_crm__monnaie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="monnaie"/>
+
+        <addForeignKeyConstraint baseColumnNames="charge_affaire_id"
+                                 baseTableName="transaction_crm"
+                                 constraintName="fk_transaction_crm__charge_affaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="transaction_crm"
+                                 constraintName="fk_transaction_crm__client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="transaction_crm_id"
+                                 baseTableName="rel_transaction_crm__activite"
+                                 constraintName="fk_rel_transaction_crm__activite__transaction_crm_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction_crm"/>
+
+        <addForeignKeyConstraint baseColumnNames="activite_id"
+                                 baseTableName="rel_transaction_crm__activite"
+                                 constraintName="fk_rel_transaction_crm__activite__activite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="activite"/>
+    </changeSet>
+</databaseChangeLog>

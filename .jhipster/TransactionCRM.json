@@ -1,0 +1,108 @@
+{
+  "applications": ["scibscrm"],
+  "changelogDate": "20221211102327",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "transaction_crm",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "transactionEtape",
+      "fieldType": "TransactionEtape",
+      "fieldValues": "NOUVEAU,PAPIERS,DEVIS,PROGRESSION,FACTURE,FINALISEE"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "transactionRecurrente",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "creeLe",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dernierUpdate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "source",
+      "fieldType": "TransactionSource",
+      "fieldValues": "APPEL,EMAIL,SALON,AUTRES,CLIENT_EXISTANT (Client existant),RECOMMANDATION,WEBSITE"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "TransactionCRM",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "moneyName",
+      "otherEntityName": "monnaie",
+      "otherEntityRelationshipName": "transactionCRM",
+      "relationshipName": "monnaie",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "employeeName",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "transactionCRM",
+      "relationshipName": "chargeAffaire",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "company",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "transactionCRM",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "activite",
+      "otherEntityRelationshipName": "transactionCRM",
+      "ownerSide": true,
+      "relationshipName": "activite",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

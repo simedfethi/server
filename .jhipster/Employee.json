@@ -1,0 +1,68 @@
+{
+  "applications": ["scibscrm"],
+  "changelogDate": "20221211102227",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "employeeName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE,FEMALE,OTHER"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "addressLine1",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Employee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "employee",
+      "ownerSide": true,
+      "relationshipName": "utilisateur",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "departmentName",
+      "otherEntityName": "departement",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "departement",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "activite",
+      "otherEntityRelationshipName": "createur",
+      "relationshipName": "activityAss",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "activite",
+      "otherEntityRelationshipName": "employeeInclus",
+      "ownerSide": false,
+      "relationshipName": "activityEmp",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

@@ -1,0 +1,68 @@
+{
+  "applications": ["scibscrm"],
+  "changelogDate": "20221211102927",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "activite",
+  "fields": [
+    {
+      "fieldName": "typeactivite",
+      "fieldType": "TypeActivite",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "EMAIL,COMMENTAIRE,REUNION,APPELER,A_FAIRE (A FAIRE),SMS,CONFERENCE,TACHE"
+    },
+    {
+      "fieldName": "resume",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateEcheance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "heureActivite",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "importance",
+      "fieldType": "Importance",
+      "fieldValues": "FAIBLE,MOYENNE,IMPORTANT"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Activite",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "employeeName",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "activityAss",
+      "relationshipName": "createur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "employeeName",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "activityEmp",
+      "ownerSide": true,
+      "relationshipName": "employeeInclus",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "transactionCRM",
+      "otherEntityRelationshipName": "activite",
+      "ownerSide": false,
+      "relationshipName": "transactionCRM",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

@@ -1,0 +1,29 @@
+{
+  "applications": ["scibscrm"],
+  "changelogDate": "20221211102427",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "monnaie",
+  "fields": [
+    {
+      "fieldName": "moneyName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "moneyIsocode",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Monnaie",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl",
+  "skipClient": true
+}
